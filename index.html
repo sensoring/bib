@@ -1,0 +1,196 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Bib Seat Information System - Regensburg</title>
+  <meta name="description" content="">
+  <meta name="author" content="Regensburg">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width = device-width, initial-scale = 1.0">
+
+  <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<script src="js/scripts.js"></script>
+
+
+<!-- Starts clock on site load -->
+<body onload="startTime()">
+
+  <div id="time"></div>
+  <div class="siteContainer">
+
+
+
+    <div id='titleContainer'>
+
+      <h1>Sitzplatz Auskunftssystem</h1>
+
+      <h1>Universitätsbibliothek Regensburg</h1>
+
+      <h2><code>Teilbibliothek XX</code></h2>
+
+      <h2>Aktuell <span id="openingStatus">geschlossen</span></h2>
+
+      <h2 id="seadsInfo">Anzahl freier Sitzplätze: <span id="seadsFree"></span>/500*</h2>
+
+      <br>
+      <hr>
+      <br>
+      <span id="room1" class="rooms" onclick="chooseRoom(this)">Hauptraum</span>
+      <span id="room2" class="rooms" onclick="chooseRoom(this)">Leseraum I</span>
+      <span id="room3" class="rooms" onclick="chooseRoom(this)">Leseraum II</span>
+      <span id="room4" class="rooms" onclick="chooseRoom(this)">Leseraum III</span>
+
+      <br><br><br><br><br>
+
+      <div id="viewRoom1">
+        <div><h3>Freie Sitzplätze im <u><i>Hauptraum</i></u>: <span id="viewRoom1SeadsFree">2</span> (von insgesamt 4 Sitzplätzen)</h3></div>
+        <br><br>
+        <div id="seat1" class="seat free" onclick="handleSeatInfo(this)">Sitzplatz 1 <p id="seat1Label">FREI</p> <p>&gt;&gt; INFO &lt;&lt;</p></div>
+        <code id="seatPopup1"  class="seatPopup seatFree" onclick="hideSeatInfo(this)">
+          Sitzplatz: 1 <br>
+          <b>Status: <span id="seatPopup1Label">FREI</span> </b><br>
+          Entfernung: 85m <br>
+          Laufzeit: ~30s <br>
+          Wegbeschreibung: Bla, bla bla! Bla bla bla: bla bla. Blabla - bla.
+        </code>
+        <div id="seat2" class="seat taken" onclick="handleSeatInfo(this)">Sitzplatz 2 <p id="seat2Label">BELEGT</p> <p>&gt;&gt; INFO &lt;&lt;</p></div>
+        <code id="seatPopup2"  class="seatPopup seatTaken" onclick="hideSeatInfo(this)">
+          Sitzplatz: 2 <br>
+          <b>Status: <span id="seatPopup2Label">BELEGT</span> </b><br>
+          Entfernung: 88m <br>
+          Laufzeit: ~30s <br>
+          Wegbeschreibung: Bla, bla bla! Bla bla bla: bla bla. Blabla - bla.
+        </code>
+        <br>
+        <div id="seat3" class="seat taken" onclick="handleSeatInfo(this)">Sitzplatz 3 <p id="seat3Label">BELEGT</p> <p>&gt;&gt; INFO &lt;&lt;</p></div>
+        <code id="seatPopup3"  class="seatPopup seatTaken" onclick="hideSeatInfo(this)">
+          Sitzplatz: 3 <br>
+          <b>Status: <span id="seatPopup3Label">BELEGT</span> </b><br>
+          Entfernung: 102m <br>
+          Laufzeit: ~35s <br>
+          Wegbeschreibung: Bla, bla bla! Bla bla bla: bla bla. Blabla - bla.
+        </code>
+        <div id="seat4" class="seat free" onclick="handleSeatInfo(this)">Sitzplatz 4 <p id="seat4Label">FREI</p> <p>&gt;&gt; INFO &lt;&lt;</p></div>
+        <code id="seatPopup4"  class="seatPopup seatFree" onclick="hideSeatInfo(this)">
+          Sitzplatz: 4 <br>
+          <b>Status: <span id="seatPopup4Label">FREI</span> </b><br>
+          Entfernung: 109m <br>
+          Laufzeit: ~35s <br>
+          Wegbeschreibung: Bla, bla bla! Bla bla bla: bla bla. Blabla - bla.
+        </code>
+      </div>
+
+      <div id="viewRoom2" style="display: none;">
+        <div><h3>Freie Sitzplätze im <u><i>Leseraum XYZ</i></u>: <span id="viewRoom2SeadsFree">0</span> (von insgesamt 6 Sitzplätzen)</h3></div>
+        <br><br>
+        <div id="seat5" class="seat">Sitzplatz W <p>BELEGT</p> <p>&gt;&gt; INFO &lt;&lt;</p></div>
+        <div id="seat5" class="seat">Sitzplatz X <p>BELEGT</p> <p>&gt;&gt; INFO &lt;&lt;</p></div>
+        <div id="seat5" class="seat">Sitzplatz X <p>BELEGT</p> <p>&gt;&gt; INFO &lt;&lt;</p></div>
+        <br>
+        <div id="seat5" class="seat">Sitzplatz Y <p>BELEGT</p> <p>&gt;&gt; INFO &lt;&lt;</p></div>
+        <div id="seat5" class="seat">Sitzplatz Z <p>BELEGT</p> <p>&gt;&gt; INFO &lt;&lt;</p></div>
+        <div id="seat5" class="seat">Sitzplatz X <p>BELEGT</p> <p>&gt;&gt; INFO &lt;&lt;</p></div>
+      </div>
+
+      <br><br><br><br><br><br>
+
+</div>
+
+  </div>
+
+
+
+</body>
+
+<script>
+
+  document.onreadystatechange = function () {
+     if (document.readyState == "complete") {
+
+       document.getElementById('seadsFree').innerHTML = 2;
+       document.getElementById('seadsInfo').style.color = "green";
+
+
+       // ?token=demo&s1=1&s2=1&s3=1&s4=0
+
+       // Demo input for sensor data
+       var token = getParameterByName("token", document.location.href); // security token (demo only)
+       var s1 = getParameterByName("s1", document.location.href); // status of seat 1
+       var s2 = getParameterByName("s2", document.location.href); // status of seat 2
+       var s3 = getParameterByName("s3", document.location.href); // status of seat 3
+       var s4 = getParameterByName("s4", document.location.href); // status of seat 4
+       var total = getParameterByName("total", document.location.href); // total seats
+       var f = getParameterByName("f", document.location.href); // number of free seats
+
+       if (token === "demo") {
+         if (total == null) {
+           total = 500;
+         }
+         if (s1 === null) {
+           s1 = 0;
+         }
+         if (s2 === null) {
+           s2 = 0;
+         }
+         if (s3 === null) {
+           s3 = 0;
+         }
+         if (s4 === null) {
+           s4 = 0;
+         }
+
+         if (f === null) {
+           f = parseInt(s1)+parseInt(s2)+parseInt(s3)+parseInt(s4);
+         }
+
+         document.getElementById("viewRoom1SeadsFree").innerHTML = f;
+         if (f < 1) {
+           document.getElementById('seadsFree').innerHTML = f;
+           document.getElementById('seadsInfo').style.color = "red";
+         } else {
+           document.getElementById('seadsFree').innerHTML = f;
+           document.getElementById('seadsInfo').style.color = "green";
+         }
+
+
+
+         setSeatStatus(1, s1);
+         setSeatStatus(2, s2);
+         setSeatStatus(3, s3);
+         setSeatStatus(4, s4);
+   }
+ }
+
+
+
+  }
+
+  function setSeatStatus(seatNumber, status) {
+    if (status == 1) {
+      console.log("Sitznumer:" + seatNumber + " Status: " + status + " (FREI)");
+      document.getElementById("seat" + seatNumber + "Label").innerHTML = "FREI";
+      document.getElementById("seatPopup" + seatNumber + "Label").innerHTML = "FREI";
+      document.getElementById("seatPopup" + seatNumber).classList.remove("seatTaken");
+      document.getElementById("seatPopup" + seatNumber).classList.add("seatFree");
+      document.getElementById("seat" + seatNumber).classList.remove("taken");
+      document.getElementById("seat" + seatNumber).classList.add("free");
+    } else if (status == 0) {
+      console.log("Sitznumer:" + seatNumber + " Status: " + status + " (BELEGT)");
+      document.getElementById("seat" + seatNumber + "Label").innerHTML = "BELEGT";
+      document.getElementById("seatPopup" + seatNumber + "Label").innerHTML = "BELEGT";
+      document.getElementById("seatPopup" + seatNumber).classList.remove("seatFree");
+      document.getElementById("seatPopup" + seatNumber).classList.add("seatTaken");
+      document.getElementById("seat" + seatNumber).classList.remove("free");
+      document.getElementById("seat" + seatNumber).classList.add("taken");
+    }
+
+  }
+</script>
+
+
+</html>
