@@ -29,75 +29,82 @@
 
       <h1>Sitzplatz Auskunftssystem</h1>
 
-      <h1>Universitätsbibliothek Regensburg</h1>
+      <h1>Bibliothek OTH Regensburg</h1>
 
-      <h2><code>Teilbibliothek XX</code></h2>
+      <h2><code>Sybothstraße</code></h2>
 
       <h2>Aktuell <span id="openingStatus">geschlossen</span></h2>
 
-      <h2 id="seadsInfo">Anzahl freier Sitzplätze: <span id="seadsFree"></span>/500*</h2>
+      <h2 id="seadsInfo">Anzahl freier Sitzplätze: <span id="seadsFree"></span>/8</h2>
 
       <br>
       <hr>
       <br>
-      <span id="room1" class="rooms" onclick="chooseRoom(this)">Hauptraum</span>
-      <span id="room2" class="rooms" onclick="chooseRoom(this)">Leseraum I</span>
-      <span id="room3" class="rooms" onclick="chooseRoom(this)">Leseraum II</span>
-      <span id="room4" class="rooms" onclick="chooseRoom(this)">Leseraum III</span>
+      <span id="room1" class="rooms" onclick="chooseRoom(this)">Erdgeschoss (EG)<br><font size="5px">(<span id="room1overviewFree"></span> von 4 frei)</font></span>
+      <span id="room2" class="rooms" onclick="chooseRoom(this)">Untergeschoss (UG)<br><font size="5px">(<span id="room2overviewFree"></span> von 4 frei)</font></span>
 
-      <br><br><br><br><br>
+      <br><br>
 
       <div id="viewRoom1">
-        <div><h3>Freie Sitzplätze im <u><i>Hauptraum</i></u>: <span id="viewRoom1SeadsFree">2</span> (von insgesamt 4 Sitzplätzen)</h3></div>
-        <br><br>
+        <div><h3>Freie Sitzplätze im <u><i>Erdgeschoss</i></u>: <span id="viewRoom1SeadsFree">2</span> (von insgesamt 4 Sitzplätzen)</h3></div>
+        <br>
         <div id="seat1" class="seat free" onclick="handleSeatInfo(this)">Sitzplatz 1 <p id="seat1Label">FREI</p> <p>&gt;&gt; INFO &lt;&lt;</p></div>
         <code id="seatPopup1"  class="seatPopup seatFree" onclick="hideSeatInfo(this)">
-          Sitzplatz: 1 <br>
+          Sitzplatz-Nr: 1 <br>
           <b>Status: <span id="seatPopup1Label">FREI</span> </b><br>
-          Entfernung: 85m <br>
-          Laufzeit: ~30s <br>
-          Wegbeschreibung: Bla, bla bla! Bla bla bla: bla bla. Blabla - bla.
+          Steckdosen: 0 <br>
         </code>
         <div id="seat2" class="seat taken" onclick="handleSeatInfo(this)">Sitzplatz 2 <p id="seat2Label">BELEGT</p> <p>&gt;&gt; INFO &lt;&lt;</p></div>
         <code id="seatPopup2"  class="seatPopup seatTaken" onclick="hideSeatInfo(this)">
-          Sitzplatz: 2 <br>
+          Sitzplatz-Nr: 2 <br>
           <b>Status: <span id="seatPopup2Label">BELEGT</span> </b><br>
-          Entfernung: 88m <br>
-          Laufzeit: ~30s <br>
-          Wegbeschreibung: Bla, bla bla! Bla bla bla: bla bla. Blabla - bla.
+          Steckdosen: 0 <br>
         </code>
-        <br>
         <div id="seat3" class="seat taken" onclick="handleSeatInfo(this)">Sitzplatz 3 <p id="seat3Label">BELEGT</p> <p>&gt;&gt; INFO &lt;&lt;</p></div>
         <code id="seatPopup3"  class="seatPopup seatTaken" onclick="hideSeatInfo(this)">
-          Sitzplatz: 3 <br>
+          Sitzplatz-Nr: 3 <br>
           <b>Status: <span id="seatPopup3Label">BELEGT</span> </b><br>
-          Entfernung: 102m <br>
-          Laufzeit: ~35s <br>
-          Wegbeschreibung: Bla, bla bla! Bla bla bla: bla bla. Blabla - bla.
+          Steckdosen: 1 <br>
         </code>
         <div id="seat4" class="seat free" onclick="handleSeatInfo(this)">Sitzplatz 4 <p id="seat4Label">FREI</p> <p>&gt;&gt; INFO &lt;&lt;</p></div>
         <code id="seatPopup4"  class="seatPopup seatFree" onclick="hideSeatInfo(this)">
-          Sitzplatz: 4 <br>
+          Sitzplatz-Nr: 4 <br>
           <b>Status: <span id="seatPopup4Label">FREI</span> </b><br>
-          Entfernung: 109m <br>
-          Laufzeit: ~35s <br>
-          Wegbeschreibung: Bla, bla bla! Bla bla bla: bla bla. Blabla - bla.
+          Steckdosen: 2 <br>
         </code>
       </div>
 
       <div id="viewRoom2" style="display: none;">
-        <div><h3>Freie Sitzplätze im <u><i>Leseraum XYZ</i></u>: <span id="viewRoom2SeadsFree">0</span> (von insgesamt 6 Sitzplätzen)</h3></div>
-        <br><br>
-        <div id="seat5" class="seat">Sitzplatz W <p>BELEGT</p> <p>&gt;&gt; INFO &lt;&lt;</p></div>
-        <div id="seat5" class="seat">Sitzplatz X <p>BELEGT</p> <p>&gt;&gt; INFO &lt;&lt;</p></div>
-        <div id="seat5" class="seat">Sitzplatz X <p>BELEGT</p> <p>&gt;&gt; INFO &lt;&lt;</p></div>
+        <div><h3>Freie Sitzplätze im <u><i>Untergeschoss</i></u>: <span id="viewRoom2SeadsFree">2</span> (von insgesamt 4 Sitzplätzen)</h3></div>
         <br>
-        <div id="seat5" class="seat">Sitzplatz Y <p>BELEGT</p> <p>&gt;&gt; INFO &lt;&lt;</p></div>
-        <div id="seat5" class="seat">Sitzplatz Z <p>BELEGT</p> <p>&gt;&gt; INFO &lt;&lt;</p></div>
-        <div id="seat5" class="seat">Sitzplatz X <p>BELEGT</p> <p>&gt;&gt; INFO &lt;&lt;</p></div>
+        <div id="seat5" class="seat taken" onclick="handleSeatInfo(this)">Sitzplatz 5 <p id="seat5Label">BELEGT</p> <p>&gt;&gt; INFO &lt;&lt;</p></div>
+        <code id="seatPopup5"  class="seatPopup seatTaken" onclick="hideSeatInfo(this)">
+          Sitzplatz-Nr: 5 <br>
+          <b>Status: <span id="seatPopup5Label">BELEGT</span> </b><br>
+          Steckdosen: 2 <br>
+        </code>
+        <div id="seat6" class="seat free" onclick="handleSeatInfo(this)">Sitzplatz 6 <p id="seat6Label">FREI</p> <p>&gt;&gt; INFO &lt;&lt;</p></div>
+        <code id="seatPopup6"  class="seatPopup seatFree" onclick="hideSeatInfo(this)">
+          Sitzplatz-Nr: 6 <br>
+          <b>Status: <span id="seatPopup6Label">FREI</span> </b><br>
+          Steckdosen: 1 <br>
+        </code>
+        <div id="seat7" class="seat free" onclick="handleSeatInfo(this)">Sitzplatz 7 <p id="seat7Label">FREI</p> <p>&gt;&gt; INFO &lt;&lt;</p></div>
+        <code id="seatPopup7"  class="seatPopup seatFree" onclick="hideSeatInfo(this)">
+          Sitzplatz-Nr: 7 <br>
+          <b>Status: <span id="seatPopup7Label">FREI</span> </b><br>
+          Steckdosen: 0 <br>
+        </code>
+        <div id="seat8" class="seat taken" onclick="handleSeatInfo(this)">Sitzplatz 8 <p id="seat8Label">BELEGT</p> <p>&gt;&gt; INFO &lt;&lt;</p></div>
+        <code id="seatPopup8"  class="seatPopup seatTaken" onclick="hideSeatInfo(this)">
+          Sitzplatz-Nr: 8 <br>
+          <b>Status: <span id="seatPopup8Label">BELEGT</span> </b><br>
+          Steckdosen: 0 <br>
+        </code>
       </div>
 
       <br><br><br><br><br><br>
+      <div><a href="https://www.oth-regensburg.de/hochschule/einrichtungen/hochschulbibliothek/oeffnungszeiten.html" target="_blank">Hier</a> gehts zum Überblick der Öffnungszeiten.</div>
 
 </div>
 
@@ -117,6 +124,7 @@
 
 
        // ?token=demo&s1=1&s2=1&s3=1&s4=0
+       // ?token=demo&s1=1&s2=1&s3=1&s4=0&s5=1&s6=1&s7=0&s8=0
 
        // Demo input for sensor data
        var token = getParameterByName("token", document.location.href); // security token (demo only)
@@ -124,13 +132,20 @@
        var s2 = getParameterByName("s2", document.location.href); // status of seat 2
        var s3 = getParameterByName("s3", document.location.href); // status of seat 3
        var s4 = getParameterByName("s4", document.location.href); // status of seat 4
+       var s5 = getParameterByName("s5", document.location.href); // status of seat 5
+       var s6 = getParameterByName("s6", document.location.href); // status of seat 6
+       var s7 = getParameterByName("s7", document.location.href); // status of seat 7
+       var s8 = getParameterByName("s8", document.location.href); // status of seat 8
        var total = getParameterByName("total", document.location.href); // total seats
        var f = getParameterByName("f", document.location.href); // number of free seats
+       var feg;
+       var fug;
 
        if (token === "demo") {
          if (total == null) {
            total = 500;
          }
+         // Ergeschoss (standarmäßig frei)
          if (s1 === null) {
            s1 = 0;
          }
@@ -144,11 +159,32 @@
            s4 = 0;
          }
 
-         if (f === null) {
-           f = parseInt(s1)+parseInt(s2)+parseInt(s3)+parseInt(s4);
+         // Untergeschoss (standarmäßig belegt)
+         if (s5 === null) {
+           s5 = 1;
+         }
+         if (s6 === null) {
+           s6 = 1;
+         }
+         if (s7 === null) {
+           s7 = 1;
+         }
+         if (s8 === null) {
+           s8 = 1;
          }
 
-         document.getElementById("viewRoom1SeadsFree").innerHTML = f;
+         feg = parseInt(s1)+parseInt(s2)+parseInt(s3)+parseInt(s4)
+         fug = parseInt(s5)+parseInt(s6)+parseInt(s7)+parseInt(s8);
+
+         if (f === null) {
+           f = feg + fug;
+         }
+
+        document.getElementById("viewRoom1SeadsFree").innerHTML = feg;
+        document.getElementById("viewRoom2SeadsFree").innerHTML = fug;
+        document.getElementById("room1overviewFree").innerHTML = feg;
+        document.getElementById("room2overviewFree").innerHTML = fug;
+
          if (f < 1) {
            document.getElementById('seadsFree').innerHTML = f;
            document.getElementById('seadsInfo').style.color = "red";
@@ -163,6 +199,11 @@
          setSeatStatus(2, s2);
          setSeatStatus(3, s3);
          setSeatStatus(4, s4);
+         setSeatStatus(5, s5);
+         setSeatStatus(6, s6);
+         setSeatStatus(7, s7);
+         setSeatStatus(8, s8);
+
    }
  }
 
