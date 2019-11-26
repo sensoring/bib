@@ -40,8 +40,8 @@
       <br>
       <hr>
       <br>
-      <span id="room1" class="rooms" onclick="chooseRoom(this)">Erdgeschoss (EG)<br><font size="5px">(<span id="room1overviewFree"></span> von 4 frei)</font></span>
-      <span id="room2" class="rooms" onclick="chooseRoom(this)">Untergeschoss (UG)<br><font size="5px">(<span id="room2overviewFree"></span> von 4 frei)</font></span>
+      <span id="room1" class="rooms" onclick="chooseRoom(this)">Erdgeschoss (EG)<br><font size="5px">(<span id="room1overviewFree">2</span> von 4 frei)</font></span>
+      <span id="room2" class="rooms" onclick="chooseRoom(this)">Untergeschoss (UG)<br><font size="5px">(<span id="room2overviewFree">2</span> von 4 frei)</font></span>
 
       <br><br>
 
@@ -119,7 +119,7 @@
   document.onreadystatechange = function () {
      if (document.readyState == "complete") {
 
-       document.getElementById('seadsFree').innerHTML = 2;
+       document.getElementById('seadsFree').innerHTML = 4;
        document.getElementById('seadsInfo').style.color = "green";
 
 
