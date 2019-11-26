@@ -53,7 +53,7 @@
   height: 120px;
   border: double;
   padding: 5px;
-  margin: 5px;
+  margin: 8px;
   display: inline-block;
 }
 
@@ -70,12 +70,13 @@
 .seatPopup {
   display: none;
   position: absolute;
-  text-align: left;
+  text-align: center;
   background-color: black;
   color: white;
   border-radius: 12px;
   padding: 8px;
   width: 130px;
+  line-height: 40px;
   min-height: 130px;
   margin-left: -150px;
   cursor: pointer;
